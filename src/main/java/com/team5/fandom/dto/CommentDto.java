@@ -17,34 +17,44 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+@Builder
 public class CommentDto {
 
     private Integer commentId;
     private String commentContent;
     private User user;
-    
     private Post post;
-    // 정적팩토리 without ID
+    
+    // 빌더를 활용한 정적 팩토리 메서드 (without ID)
     public static CommentDto of(String commentContent, User user, Post post) {
-        return new CommentDto(null, commentContent, user, post);
+        return CommentDto.builder()
+                .commentContent(commentContent)
+                .user(user)
+                .post(post)
+                .build();
     }
 
-    // 정적팩토리 with ID
+    // 빌더를 활용한 정적 팩토리 메서드 (with ID)
     public static CommentDto of(Integer commentId, String commentContent, User user, Post post) {
-        return new CommentDto(commentId, commentContent, user, post);
+        return CommentDto.builder()
+                .commentId(commentId)
+                .commentContent(commentContent)
+                .user(user)
+                .post(post)
+                .build();
     }
 
-    // entity -> CommentDto
+    // entity -> CommentDto 변환 메서드
     public static CommentDto from(Comment comment) {
-        return new CommentDto(
-                comment.getCommentId(),
-                comment.getCommentContent(),
-                comment.getUser(),
-                comment.getPost()
-        );
+        return CommentDto.builder()
+                .commentId(comment.getCommentId())
+                .commentContent(comment.getCommentContent())
+                .user(comment.getUser())
+                .post(comment.getPost())
+                .build();
     }
 
-    // CommentDto -> Comment entity
+    // CommentDto -> Comment entity 변환 메서드
     public Comment toEntity() {
         return Comment.of(
                 this.commentId,
