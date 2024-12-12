@@ -1,5 +1,6 @@
 package com.team5.fandom.entity;
 
+import com.team5.fandom.common.utils.TagAttributeConverter;
 import com.team5.fandom.entity.value.Tag;
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,7 +30,8 @@ public class Post {
     @JoinColumn(name = "fandom_id")
     private Fandom fandom;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
+    @Convert(converter = TagAttributeConverter.class)
     private Tag tag;
 
     private String img;

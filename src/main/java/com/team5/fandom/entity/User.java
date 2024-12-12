@@ -1,12 +1,12 @@
 package com.team5.fandom.entity;
 
-import java.util.Objects;
-
+import com.team5.fandom.common.utils.LevelAttributeConverter;
+import com.team5.fandom.common.utils.RoleAttributeConverter;
 import com.team5.fandom.entity.value.Level;
 import com.team5.fandom.entity.value.Role;
-import com.team5.fandom.entity.value.Tag;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,10 +16,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -38,11 +36,13 @@ public class User {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
+    @Convert(converter = RoleAttributeConverter.class)
     @Column(name = "role", nullable = false)
     private Role role;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
+    @Convert(converter = LevelAttributeConverter.class)
     @Column(name = "fan_level", nullable = false)
     private Level fanLevel;
 

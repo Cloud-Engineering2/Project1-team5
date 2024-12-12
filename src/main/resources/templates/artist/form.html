@@ -19,7 +19,7 @@
                 <td th:text="${iterStat.count}"></td>
                 <td th:text="${artist.artistId}"></td>
                 <td th:text="${artist.artistName}"></td>
-                <td th:text="${artist.debutDate}"></td>
+                <td th:text="${#temporals.format(artist?.debutDate, 'yyyy-MM-dd')}"></td>
             </tr>
         </tbody>
     </table>
