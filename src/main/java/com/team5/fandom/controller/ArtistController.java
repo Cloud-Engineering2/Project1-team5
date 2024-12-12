@@ -22,7 +22,6 @@ public class ArtistController {
     @GetMapping
     public String getAllArtists(ModelMap map) {
     	map.addAttribute("fandoms", fandomService.getFandoms());
-    	map.addAttribute("artists", artistService.getAllArtists());
         return "artist/artists";
     }
 
