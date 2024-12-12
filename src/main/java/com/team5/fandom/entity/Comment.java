@@ -29,21 +29,11 @@ public class Comment {
         this.user = user;
         this.post = post;
     }
-
-    private Comment(Integer commentId, String commentContent, User user, Post post) {
-        this.commentId = commentId;
-        this.commentContent = commentContent;
-        this.user = user;
-        this.post = post;
-    }
+    
 
     // No ID
     public static Comment of(String commentContent, User user, Post post) {
-        return new Comment(null, commentContent, user, post);
+        return new Comment(commentContent, user, post);
     }
 
-    // With ID
-    public static Comment of(Integer commentId, String commentContent, User user, Post post) {
-        return new Comment(commentId, commentContent, user, post);
-    }
 }
