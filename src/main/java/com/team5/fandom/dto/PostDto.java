@@ -3,6 +3,8 @@ package com.team5.fandom.dto;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.Post;
 import com.team5.fandom.entity.User;
+import com.team5.fandom.entity.value.Level;
+import com.team5.fandom.entity.value.Role;
 import com.team5.fandom.entity.value.Tag;
 
 import lombok.AllArgsConstructor;
@@ -23,30 +25,45 @@ public class PostDto {
     private String img;
     
     
-    // 정적팩토리 without ID
+    // 빌더를 활용한 정적 팩토리 메서드 (without ID)
     public static PostDto of(String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
-        return new PostDto(null, postTitle, postContent, user, fandom, tag, img);
+        return PostDto.builder()
+                .postTitle(postTitle)
+                .postContent(postContent)
+                .user(user)
+                .fandom(fandom)
+                .tag(tag)
+                .img(img)
+                .build();
     }
 
-    // 정적팩토리 with ID
+    // 빌더를 활용한 정적 팩토리 메서드 (with ID)
     public static PostDto of(Integer postId, String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
-        return new PostDto(postId, postTitle, postContent, user, fandom, tag, img);
+        return PostDto.builder()
+                .postId(postId)
+                .postTitle(postTitle)
+                .postContent(postContent)
+                .user(user)
+                .fandom(fandom)
+                .tag(tag)
+                .img(img)
+                .build();
     }
 
-    // entity -> Dto
+    // Entity -> Dto 변환 메서드
     public static PostDto from(Post post) {
-        return new PostDto(
-                post.getPostId(),
-                post.getPostTitle(),
-                post.getPostContent(),
-                post.getUser(),
-                post.getFandom(),
-                post.getTag(),
-                post.getImg()
-        );
+        return PostDto.builder()
+                .postId(post.getPostId())
+                .postTitle(post.getPostTitle())
+                .postContent(post.getPostContent())
+                .user(post.getUser())
+                .fandom(post.getFandom())
+                .tag(post.getTag())
+                .img(post.getImg())
+                .build();
     }
 
-    // Dto -> entity
+    // Dto -> Entity 변환 메서드
     public Post toEntity() {
         return Post.of(
                 this.postId,

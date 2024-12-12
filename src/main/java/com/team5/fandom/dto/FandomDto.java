@@ -17,6 +17,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+@Builder
 public class FandomDto {
     private Integer fandomId;
     private String fandomName;
@@ -24,28 +25,39 @@ public class FandomDto {
     private Integer fandomExp;
     private Artist artist;
 
-    // 정적팩토리 without ID
+    // 빌더를 활용한 정적 팩토리 메서드 (without ID)
     public static FandomDto of(String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
-        return new FandomDto(null, fandomName, fandomLevel, fandomExp, artist);
+        return FandomDto.builder()
+                .fandomName(fandomName)
+                .fandomLevel(fandomLevel)
+                .fandomExp(fandomExp)
+                .artist(artist)
+                .build();
     }
 
-    // 정적팩토리 with ID
+    // 빌더를 활용한 정적 팩토리 메서드 (with ID)
     public static FandomDto of(Integer fandomId, String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
-        return new FandomDto(fandomId, fandomName, fandomLevel, fandomExp, artist);
+        return FandomDto.builder()
+                .fandomId(fandomId)
+                .fandomName(fandomName)
+                .fandomLevel(fandomLevel)
+                .fandomExp(fandomExp)
+                .artist(artist)
+                .build();
     }
 
-    // Fandom entity -> FandomDto
+    // Fandom entity -> FandomDto 변환 메서드
     public static FandomDto from(Fandom fandom) {
-        return new FandomDto(
-                fandom.getFandomId(),
-                fandom.getFandomName(),
-                fandom.getFandomLevel(),
-                fandom.getFandomExp(),
-                fandom.getArtist()
-        );
+        return FandomDto.builder()
+                .fandomId(fandom.getFandomId())
+                .fandomName(fandom.getFandomName())
+                .fandomLevel(fandom.getFandomLevel())
+                .fandomExp(fandom.getFandomExp())
+                .artist(fandom.getArtist())
+                .build();
     }
 
-    // FandomDto -> Fandom entity
+    // FandomDto -> Fandom entity 변환 메서드
     public Fandom toEntity() {
         return Fandom.of(
                 this.fandomId,
