@@ -21,7 +21,7 @@ public class ArtistController {
     public String getAllArtists(ModelMap map) {
     	
     	map.addAttribute("artists", artistService.getAllArtists());
-        return "artist/form";
+        return "artist/artists";
     }
 
     @GetMapping("/{id}")
