@@ -22,7 +22,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class User {
@@ -54,30 +53,27 @@ public class User {
     @JoinColumn(name = "fandom_id")
     private Fandom fandom;
 
+    private User(String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Fandom fandom) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.fanLevel = fanLevel;
+        this.fanExp = fanExp;
+        this.fandom = fandom;
+    }
+
+
     //No ID
     public static User of( String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Fandom fandom) {
-        return new User(null, userName, email, password, role, fanLevel, fanExp, fandom);
+        return new User(userName, email, password, role, fanLevel, fanExp, fandom);
     }
     
-    //With ID
-    public static User of(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Fandom fandom) {
-        return new User(userId, userName, email, password, role, fanLevel, fanExp, fandom);
-    }
+
 
     
     
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User that)) return false;
-        return this.getUserId() != null && this.getUserId().equals(that.getUserId());
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.getUserId());
-    }
-     
     
 }
 

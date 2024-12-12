@@ -1,4 +1,4 @@
-package com.team5.fandom.controller.rto;
+package com.team5.fandom.controller.rto.request;
 
 import com.team5.fandom.entity.Post;
 import com.team5.fandom.entity.User;

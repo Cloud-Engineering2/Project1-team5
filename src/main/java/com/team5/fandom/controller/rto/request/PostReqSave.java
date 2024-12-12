@@ -1,16 +1,14 @@
-package com.team5.fandom.controller.rto;
+package com.team5.fandom.controller.rto.request;
 
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.User;
 import com.team5.fandom.entity.value.Tag;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class PostResponse {
+public class PostReqSave {
     private Integer postId;
     private String postTitle;
     private String postContent;

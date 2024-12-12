@@ -1,4 +1,4 @@
-package com.team5.fandom.controller.rto;
+package com.team5.fandom.controller.rto.request;
 
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.User;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PostReq {
+public class PostReqEdit {
     private Integer postId;
     private String postTitle;
     private String postContent;
