@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -24,36 +23,34 @@ public class UserDto {
     private Role role;
     private Level fanLevel;
     private Integer fanExp;
-    private Integer fandomId;
+    private FandomDto fandomDto;
 
-    // 빌더를 활용한 정적 팩토리 메서드
-    public static UserDto of(String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Integer fandomId) {
-        return UserDto.builder()
-                .userName(userName)
-                .email(email)
-                .password(password)
-                .role(role)
-                .fanLevel(fanLevel)
-                .fanExp(fanExp)
-                .fandomId(fandomId)
-                .build();
+
+    private UserDto(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, FandomDto fandomDto) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.fanLevel = fanLevel;
+        this.fanExp = fanExp;
+        this.fandomDto = fandomDto;
     }
+
+
 
     // Entity -> DTO 변환
-    public static UserDto from(User user) {
-        return UserDto.builder()
-                .userId(user.getUserId())
-                .userName(user.getUserName())
-                .email(user.getEmail())
-                .password(user.getPassword())
-                .role(user.getRole())
-                .fanLevel(user.getFanLevel())
-                .fanExp(user.getFanExp())
-                .fandomId(user.getFandom() != null ? user.getFandom().getFandomId() : null)
-                .build();
+    public static UserDto toUserDto(User user) {
+        return new UserDto(
+        user.getUserId(),
+        user.getUserName(),
+        user.getEmail(),
+        user.getPassword(),
+        user.getRole(),
+        user.getFanLevel(),
+        user.getFanExp(),
+        FandomDto.toFandomDto(user.getFandom()));
     }
-    
-    
 
     // DTO -> Entity 변환
     public User toEntity(Fandom fandom) {

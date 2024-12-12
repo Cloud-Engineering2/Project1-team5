@@ -6,7 +6,6 @@ import lombok.*;
 
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Post {
@@ -36,13 +35,19 @@ public class Post {
     private String img;
 
 
-    //No Id
-    public static Post of(String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
-        return new Post(null, postTitle, postContent, user, fandom, tag, img);
+    private Post(String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.user = user;
+        this.fandom = fandom;
+        this.tag = tag;
+        this.img = img;
     }
 
-    //With Id
-    public static Post of(Integer postId, String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
-        return new Post(postId, postTitle, postContent, user, fandom, tag, img);
+
+    //No Id
+    public static Post of(String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
+        return new Post(postTitle, postContent, user, fandom, tag, img);
     }
+
 }

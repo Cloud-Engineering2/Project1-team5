@@ -3,76 +3,57 @@ package com.team5.fandom.dto;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.Post;
 import com.team5.fandom.entity.User;
-import com.team5.fandom.entity.value.Level;
-import com.team5.fandom.entity.value.Role;
 import com.team5.fandom.entity.value.Tag;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-
 @Builder
 @Getter
-@AllArgsConstructor
 public class PostDto {
 
     private Integer postId;
     private String postTitle;
     private String postContent;
-    private User user;
-    private Fandom fandom;
+    private UserDto userDto;
+    private FandomDto fandomDto;
     private Tag tag;
     private String img;
-    
-    
-    // 빌더를 활용한 정적 팩토리 메서드 (without ID)
-    public static PostDto of(String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
-        return PostDto.builder()
-                .postTitle(postTitle)
-                .postContent(postContent)
-                .user(user)
-                .fandom(fandom)
-                .tag(tag)
-                .img(img)
-                .build();
-    }
 
-    // 빌더를 활용한 정적 팩토리 메서드 (with ID)
-    public static PostDto of(Integer postId, String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
-        return PostDto.builder()
-                .postId(postId)
-                .postTitle(postTitle)
-                .postContent(postContent)
-                .user(user)
-                .fandom(fandom)
-                .tag(tag)
-                .img(img)
-                .build();
+
+    private PostDto(Integer postId, String postTitle, String postContent, UserDto userDto, FandomDto fandomDto, Tag tag, String img) {
+        this.postId = postId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.userDto = userDto;
+        this.fandomDto = fandomDto;
+        this.tag = tag;
+        this.img = img;
     }
 
     // Entity -> Dto 변환 메서드
-    public static PostDto from(Post post) {
-        return PostDto.builder()
-                .postId(post.getPostId())
-                .postTitle(post.getPostTitle())
-                .postContent(post.getPostContent())
-                .user(post.getUser())
-                .fandom(post.getFandom())
-                .tag(post.getTag())
-                .img(post.getImg())
-                .build();
+    public static PostDto toPostDto(Post post) {
+        return new PostDto(
+                post.getPostId(),
+                post.getPostTitle(),
+                post.getPostContent(),
+                UserDto.toUserDto(post.getUser()),
+                FandomDto.toFandomDto(post.getFandom()),
+                post.getTag(),
+                post.getImg()
+        );
     }
 
     // Dto -> Entity 변환 메서드
-    public Post toEntity() {
+    public Post toEntity(User user, Fandom fandom) {
         return Post.of(
-                this.postId,
-                this.postTitle,
-                this.postContent,
-                this.user,
-                this.fandom,
-                this.tag,
-                this.img
+
+                postTitle,
+                postContent,
+                user,
+                fandom,
+                tag,
+                img
         );
     }
 }

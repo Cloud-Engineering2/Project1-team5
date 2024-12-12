@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Comment {
@@ -25,13 +24,16 @@ public class Comment {
     private Post post;
 
 
+    private Comment(String commentContent, User user, Post post) {
+        this.commentContent = commentContent;
+        this.user = user;
+        this.post = post;
+    }
+    
+
     // No ID
     public static Comment of(String commentContent, User user, Post post) {
-        return new Comment(null, commentContent, user, post);
+        return new Comment(commentContent, user, post);
     }
 
-    // With ID
-    public static Comment of(Integer commentId, String commentContent, User user, Post post) {
-        return new Comment(commentId, commentContent, user, post);
-    }
 }

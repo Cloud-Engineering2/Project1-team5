@@ -11,15 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Fandom {
@@ -41,15 +36,23 @@ public class Fandom {
     @JoinColumn(name = "artist_id", unique = true)
     private Artist artist;
 
-    //No Id
-    public static Fandom of(String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
-        return new Fandom(null, fandomName, fandomLevel, fandomExp, artist);
+
+    private Fandom(String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
+        this.fandomName = fandomName;
+        this.fandomLevel = fandomLevel;
+        this.fandomExp = fandomExp;
+        this.artist = artist;
     }
 
-    //With Id
-    public static Fandom of(Integer fandomId, String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
-    	return new Fandom(fandomId, fandomName, fandomLevel, fandomExp, artist);
+
+
+    //No Id
+    @Builder
+    public static Fandom of(String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
+        return new Fandom(fandomName, fandomLevel, fandomExp, artist);
     }
+
+
     
     
 }

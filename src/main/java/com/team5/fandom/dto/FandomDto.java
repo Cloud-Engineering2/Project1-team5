@@ -13,58 +13,34 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@AllArgsConstructor
-@ToString
 @Getter
-@Setter
 @Builder
 public class FandomDto {
     private Integer fandomId;
     private String fandomName;
     private Level fandomLevel;
     private Integer fandomExp;
-    private Artist artist;
-
-    // 빌더를 활용한 정적 팩토리 메서드 (without ID)
-    public static FandomDto of(String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
-        return FandomDto.builder()
-                .fandomName(fandomName)
-                .fandomLevel(fandomLevel)
-                .fandomExp(fandomExp)
-                .artist(artist)
-                .build();
-    }
-
-    // 빌더를 활용한 정적 팩토리 메서드 (with ID)
-    public static FandomDto of(Integer fandomId, String fandomName, Level fandomLevel, Integer fandomExp, Artist artist) {
-        return FandomDto.builder()
-                .fandomId(fandomId)
-                .fandomName(fandomName)
-                .fandomLevel(fandomLevel)
-                .fandomExp(fandomExp)
-                .artist(artist)
-                .build();
-    }
+    private ArtistDto artistDto;
 
     // Fandom entity -> FandomDto 변환 메서드
-    public static FandomDto from(Fandom fandom) {
-        return FandomDto.builder()
-                .fandomId(fandom.getFandomId())
-                .fandomName(fandom.getFandomName())
-                .fandomLevel(fandom.getFandomLevel())
-                .fandomExp(fandom.getFandomExp())
-                .artist(fandom.getArtist())
-                .build();
+    public static FandomDto toFandomDto(Fandom fandom) {
+        return new FandomDto(
+                fandom.getFandomId(),
+                fandom.getFandomName(),
+                fandom.getFandomLevel(),
+                fandom.getFandomExp(),
+                ArtistDto.toArtistDto(fandom.getArtist())
+        );
     }
 
     // FandomDto -> Fandom entity 변환 메서드
-    public Fandom toEntity() {
+    private Fandom toEntity(Artist artist) {
         return Fandom.of(
-                this.fandomId,
-                this.fandomName,
-                this.fandomLevel,
-                this.fandomExp,
-                this.artist
+
+                fandomName,
+                fandomLevel,
+                fandomExp,
+                artist
         );
     }
 }
