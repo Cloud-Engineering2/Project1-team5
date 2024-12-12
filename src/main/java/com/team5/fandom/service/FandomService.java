@@ -1,5 +1,5 @@
 package com.team5.fandom.service;
 
-public class FamdonService {
+public class FandomService {
 
 }
