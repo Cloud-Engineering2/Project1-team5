@@ -48,9 +48,10 @@
 						        </tr>
 						        </thead>
 						        <tbody>
-						        <tr th:each="artist : ${artists}">
-						          <td class="name"><a th:text="${artist?.artistName}" th:href="@{/f/a/{artistId} (artistId=${artist.artistId})}">Fandom Name</a></td>
-						          <td class="exp" th:text="${#temporals.format(artist?.debutDate, 'yyyy-MM-dd')}">Fandom Exp</td>
+						        <tr th:each="fandom : ${fandoms}">
+						          <td class="name"><a th:text="${fandom?.artistDto.artistName}" th:href="@{/f/a/{artistId} (artistId=${fandom?.artistDto.artistId})}">Fandom Name</a></td>
+						          <td class="exp" th:text="${#temporals.format(fandom?.artistDto.debutDate, 'yyyy-MM-dd')}">Fandom Exp</td>
+						          <td class="name"><a th:text="${fandom?.fandomName}" th:href="@{/f/a/{fandomId}/p (fandomId=${fandom?.fandomId})}">Fandom Name</a></td>
 						        </tr>
 						        </tbody>
 						      </table>

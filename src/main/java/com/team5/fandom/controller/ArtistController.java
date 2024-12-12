@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team5.fandom.service.ArtistService;
+import com.team5.fandom.service.FandomService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,10 +17,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ArtistController {
     private final ArtistService artistService;
+    private final FandomService fandomService;
 
     @GetMapping
     public String getAllArtists(ModelMap map) {
-    	
+    	map.addAttribute("fandoms", fandomService.getFandoms());
     	map.addAttribute("artists", artistService.getAllArtists());
         return "artist/artists";
     }
