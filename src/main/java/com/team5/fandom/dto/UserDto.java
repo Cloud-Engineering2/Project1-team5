@@ -23,10 +23,10 @@ public class UserDto {
     private Role role;
     private Level fanLevel;
     private Integer fanExp;
-    private Integer fandomId;
+    private FandomDto fandomDto;
 
 
-    private UserDto(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Integer fandomId) {
+    private UserDto(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, FandomDto fandomDto) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
@@ -34,7 +34,7 @@ public class UserDto {
         this.role = role;
         this.fanLevel = fanLevel;
         this.fanExp = fanExp;
-        this.fandomId = fandomId;
+        this.fandomDto = fandomDto;
     }
 
 
@@ -49,7 +49,7 @@ public class UserDto {
         user.getRole(),
         user.getFanLevel(),
         user.getFanExp(),
-        user.getFandom().getFandomId());
+        FandomDto.toFandomDto(user.getFandom()));
     }
 
     // DTO -> Entity 변환

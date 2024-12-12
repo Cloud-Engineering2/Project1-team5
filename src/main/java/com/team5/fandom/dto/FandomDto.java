@@ -20,7 +20,7 @@ public class FandomDto {
     private String fandomName;
     private Level fandomLevel;
     private Integer fandomExp;
-    private Artist artist;
+    private ArtistDto artistDto;
 
     // Fandom entity -> FandomDto 변환 메서드
     public static FandomDto toFandomDto(Fandom fandom) {
@@ -29,12 +29,12 @@ public class FandomDto {
                 fandom.getFandomName(),
                 fandom.getFandomLevel(),
                 fandom.getFandomExp(),
-                ArtistDto.toArtistDto(fandom.getArtist()).toEntity()
+                ArtistDto.toArtistDto(fandom.getArtist())
         );
     }
 
     // FandomDto -> Fandom entity 변환 메서드
-    private Fandom toEntity() {
+    private Fandom toEntity(Artist artist) {
         return Fandom.of(
 
                 fandomName,
