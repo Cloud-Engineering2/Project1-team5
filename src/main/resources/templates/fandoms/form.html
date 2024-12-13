@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" th:href="@{/assets/css/main.css}"  />
+		<noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header th:replace="~{fragments/header :: header}"></header>
+
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div class="row">
+				      <table class="table" id="fandom-table">
+				        <thead>
+				        <tr>
+				          <th class="name col-3"><a>Fandom Name</a></th>
+				          <th class="level col-3"><a>Fandom Level</a></th>
+				          <th class="exp"><a>Fandom Exp</a></th>
+				          <th class="artist-name"><a th:href="@{/f/a}">아티스트</a></th>
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr th:each="fandom : ${fandoms}">
+				          <td class="name"><a th:text="${fandom?.fandomName}" th:href="@{/f/c/{fandomId} (fandomId=${fandom?.fandomId})}">Fandom Name</a></td>
+				          <td class="level" ><a th:text="${fandom?.fandomLevel}">Fandom Level</a></td>
+				          <td class="exp" th:text="${fandom?.fandomExp}">Fandom Exp</td>
+				          <td class="artist-name" ><a th:text="${fandom?.artistDto.artistName}" th:href="@{/f/a/{artistId} (artistId=${fandom?.artistDto.artistId})}">해당 팬덤 아티스트</a></td>
+				        </tr>
+				        </tbody>
+				      </table>
+				    </div>
+
+				<!-- Footer -->
+				<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

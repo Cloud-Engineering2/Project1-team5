@@ -1,9 +1,9 @@
 package com.team5.fandom.entity.value;
 
 public enum Tag {
-    NOVEL("Novel"),
-    CHAT("Chat"),
-    NEWS("News");
+    Tag1("Tag1"),
+    Tag2("Tag2"),
+    Tag3("Tag3");
 
     private final String hashTag;
 

@@ -1,11 +1,11 @@
 package com.team5.fandom.entity.value;
 
 public enum Level {
-    BRONZE("Bronze"),
-    SILVER("Silver"),
-    GOLD("Gold"),
-    PLATINUM("Platinum"),
-    DIAMOND("Diamond");
+	Bronze("Bronze"),
+	Silver("Silver"),
+	Gold("Gold"),
+	Platinum("Platinum"),
+	Diamond("Diamond");
 
     private final String levelName;
 
