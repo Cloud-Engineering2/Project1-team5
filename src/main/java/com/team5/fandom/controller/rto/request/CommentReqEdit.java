@@ -14,8 +14,4 @@ public class CommentReqEdit {
     @NotNull
     private Integer postId;
     private String commentContent;
-
-
-
-
 }

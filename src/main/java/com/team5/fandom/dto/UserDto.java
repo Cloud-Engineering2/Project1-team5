@@ -1,17 +1,22 @@
 package com.team5.fandom.dto;
 
+import java.time.LocalDateTime;
+
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.User;
 import com.team5.fandom.entity.value.Level;
-
-
 import com.team5.fandom.entity.value.Role;
+
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-
-
+@NoArgsConstructor
+@ToString
 @Getter
+@Setter
 @Builder
 public class UserDto {
     private Integer userId;
@@ -22,19 +27,19 @@ public class UserDto {
     private Level fanLevel;
     private Integer fanExp;
     private FandomDto fandomDto;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
-
-    public static UserDto of(Integer userId,String userName,String email,String password,Role role) {
-        return UserDto.builder()
-                .userId(userId)
-                .userName(userName)
-                .email(email)
-                .password(password)
-                .role(role)
-                .build();
-
+    private UserDto(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, FandomDto fandomDto, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.fanLevel = fanLevel;
+        this.fanExp = fanExp;
+        this.fandomDto = fandomDto;
     }
-
 
 
 
@@ -48,7 +53,9 @@ public class UserDto {
         user.getRole(),
         user.getFanLevel(),
         user.getFanExp(),
-        FandomDto.toFandomDto(user.getFandom()));
+        FandomDto.toFandomDto(user.getFandom()),
+		user.getCreatedDate(),
+		user.getModifiedDate());
     }
 
     // DTO -> Entity 변환

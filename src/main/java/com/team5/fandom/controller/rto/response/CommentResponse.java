@@ -1,18 +1,26 @@
 package com.team5.fandom.controller.rto.response;
 
+import java.time.LocalDateTime;
 
-import com.team5.fandom.entity.Post;
-import com.team5.fandom.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
+
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CommentResponse {
     private Integer commentId;
     private String commentContent;
-
-    private User user;
-
-    private Post post;
+    private Integer userId;
+    private String userName;
+    private Integer postId;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
+    
 }

@@ -1,18 +1,54 @@
 package com.team5.fandom.controller;
 
-import com.team5.fandom.controller.rto.request.CommentReqSave;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.team5.fandom.service.CommentService;
+
+import lombok.RequiredArgsConstructor;
+
+
 
 @Controller
+@RequestMapping("/comments")
+@RequiredArgsConstructor
 public class CommentController {
-/*
-    @PostMapping("/p")
-    public String newComment(@Validated @ModelAttribute CommentReqSave commentReqSave) {
 
-    }*/
+
+    private final CommentService commentService;
+
+
+//
+//    @GetMapping("/{postId}")
+//    public String getCommentsByPostId(@PathVariable Integer postId, Model model) {
+//        List<CommentResponse> comments = commentService.getCommentsByPostId(postId);
+//        
+//        model.addAttribute("comments", comments);
+//        return "posts/form";
+//    }
 }
+
+	
+/*
+ * private final CommentService commentService;
+ * 
+ * @PostMapping public String registerNewPostComment( CommentReqSave
+ * commentReqSave,
+ * 
+ * @AuthenticationPrincipal FansDetails fansDetails ) {
+ * 
+ * CommentService.registerPostComment(commentReqSave.toDto(fansDetails.toDto()))
+ * ;
+ * 
+ * return "redirect:/posts/" + commentReqSave.getPostid(); }
+ * 
+ * @PostMapping("/{pcid}/delete") public String deletePostComment(
+ * 
+ * @PathVariable Long pcid, Long pid,
+ * 
+ * @AuthenticationPrincipal BoardDetails boradDetails ) {
+ * postCommentService.deletePostComment(pcid, boradDetails.getUid()); return
+ * "redirect:/posts/" + pid; } }
+ */
+
+

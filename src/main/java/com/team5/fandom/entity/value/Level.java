@@ -1,5 +1,7 @@
 package com.team5.fandom.entity.value;
 
+import java.util.Arrays;
+
 public enum Level {
     BRONZE("Bronze"),
     SILVER("Silver"),
@@ -12,8 +14,15 @@ public enum Level {
     Level(String levelName) {
         this.levelName = levelName;
     }
-
-    public String getLevelName() {
-        return levelName;
+    
+    public String getLevel() {
+    	return levelName;
     }
+
+    public static Level getInstance(String levelGrade) {
+		return Arrays.stream(Level.values())
+					.filter(level -> level.getLevel().equals(levelGrade))
+					.findFirst()
+					.orElseThrow();
+	}
 }

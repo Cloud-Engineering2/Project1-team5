@@ -1,5 +1,7 @@
 package com.team5.fandom.dto;
 
+import java.time.LocalDateTime;
+
 import com.team5.fandom.entity.Artist;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.value.Level;
@@ -7,7 +9,8 @@ import com.team5.fandom.entity.value.Level;
 import lombok.Builder;
 import lombok.Getter;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
 public class FandomDto {
@@ -16,7 +19,8 @@ public class FandomDto {
     private Level fandomLevel;
     private Integer fandomExp;
     private ArtistDto artistDto;
-
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
     // Fandom entity -> FandomDto 변환 메서드
     public static FandomDto toFandomDto(Fandom fandom) {
         return new FandomDto(
@@ -24,12 +28,14 @@ public class FandomDto {
                 fandom.getFandomName(),
                 fandom.getFandomLevel(),
                 fandom.getFandomExp(),
-                ArtistDto.toArtistDto(fandom.getArtist())
+                ArtistDto.toArtistDto(fandom.getArtist()),
+                fandom.getCreatedDate(),
+                fandom.getModifiedDate()
         );
     }
 
     // FandomDto -> Fandom entity 변환 메서드
-    private Fandom toEntity(Artist artist) {
+    public Fandom toEntity(Artist artist) {
         return Fandom.of(
 
                 fandomName,
