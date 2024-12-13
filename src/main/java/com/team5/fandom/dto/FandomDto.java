@@ -6,8 +6,11 @@ import com.team5.fandom.entity.Artist;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.value.Level;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 
 @NoArgsConstructor
 @AllArgsConstructor

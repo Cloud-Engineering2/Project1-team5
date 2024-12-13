@@ -123,9 +123,11 @@ public class PostController {
             }
 
         }
+/*
 
         postService.savePost(postReqSave, imagePath);
         redirectAttributes.addFlashAttribute("successMessage", "게시글이 성공적으로 등록되었습니다!");
+*/
 
         return "/";
 

@@ -13,12 +13,12 @@ import lombok.RequiredArgsConstructor;
 public class PostService {
 	
 	 private final PostRepository postRepository;
-	
+/*
     public PostDto getPostByPostId(Integer postId) {
         Post post = postRepository.findByPostId(postId);
         if (post == null) {
             return null;
         }
         return PostDto.toPostDto(post);
-    }
+    }*/
 }
