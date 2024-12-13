@@ -44,7 +44,6 @@ public class Post extends AuditingFields {
     //  @Enumerated(EnumType.STRING)
     @Convert(converter = TagAttributeConverter.class)
     private Tag tag;
-
     private String img;
 
 

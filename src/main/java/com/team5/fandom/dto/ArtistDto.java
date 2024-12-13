@@ -3,8 +3,6 @@ package com.team5.fandom.dto;
 import java.time.LocalDateTime;
 
 import com.team5.fandom.entity.Artist;
-import com.team5.fandom.entity.value.Level;
-import com.team5.fandom.entity.value.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
