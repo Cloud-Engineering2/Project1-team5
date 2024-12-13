@@ -59,8 +59,8 @@ public class CommonService {
         		userDto.getUserName(),
         		userDto.getEmail(),
         		userDto.getPassword(), 
-                Role.User,            
-                Level.Bronze,         
+                Role.USER,            
+                Level.BRONZE,         
                 0,                    
                 fandom
         );

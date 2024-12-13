@@ -1,12 +1,13 @@
 package com.team5.fandom.entity;
 
+import com.team5.fandom.common.utils.LevelAttributeConverter;
+import com.team5.fandom.common.utils.RoleAttributeConverter;
 import com.team5.fandom.entity.value.Level;
 import com.team5.fandom.entity.value.Role;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,11 +34,13 @@ public class User extends AuditingFields {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
-    @Enumerated(EnumType.STRING)
+//  @Enumerated(EnumType.STRING)
+    @Convert(converter = RoleAttributeConverter.class)
     @Column(name = "role", nullable = false)
     private Role role;
 
-    @Enumerated(EnumType.STRING)
+//  @Enumerated(EnumType.STRING)
+    @Convert(converter = LevelAttributeConverter.class)
     @Column(name = "fan_level", nullable = false)
     private Level fanLevel;
 
