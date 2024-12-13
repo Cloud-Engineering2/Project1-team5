@@ -41,9 +41,10 @@ public class CommonController {
             @RequestParam("password") String password,
             HttpServletRequest request,
             Model model) {
-        
         // 사용자 인증 처리
         UserDto user = commonService.authenticate(email, password);
+        
+
 
         if (user != null) {
             // 인증 성공 시 세션 생성

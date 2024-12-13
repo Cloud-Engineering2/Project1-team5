@@ -45,7 +45,7 @@
 				        </thead>
 				        <tbody>
 				        <tr th:each="fandom : ${fandoms}">
-				          <td class="name"><a th:text="${fandom?.fandomName}" th:href="@{/f/c/{fandomId} (fandomId=${fandom?.fandomId})}">Fandom Name</a></td>
+				          <td class="name"><a th:text="${fandom?.fandomName}" th:href="@{/f/c/{fandomId}/p (fandomId=${fandom?.fandomId})}">Fandom Name</a></td>
 				          <td class="level" ><a th:text="${fandom?.fandomLevel}">Fandom Level</a></td>
 				          <td class="exp" th:text="${fandom?.fandomExp}">Fandom Exp</td>
 				          <td class="artist-name" ><a th:text="${fandom?.artistDto.artistName}" th:href="@{/f/a/{artistId} (artistId=${fandom?.artistDto.artistId})}">해당 팬덤 아티스트</a></td>

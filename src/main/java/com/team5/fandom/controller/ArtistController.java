@@ -27,7 +27,7 @@ public class ArtistController {
 
     @GetMapping("/{id}")
     public String getArtistById(@PathVariable Integer id, ModelMap map) {
-    	map.addAttribute("artists", artistService.getArtistById(id));
+    	map.addAttribute("artist", artistService.getArtistById(id));
         return "artist/form";
     }
 

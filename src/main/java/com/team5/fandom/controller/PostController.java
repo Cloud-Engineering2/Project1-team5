@@ -48,11 +48,10 @@ public class PostController {
 
     // 게시판 목록
     @GetMapping("/p")
-    public String getPosts(@PageableDefault(size = 7,sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
+    public String getPosts(@PageableDefault(size = 7,sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable,
                             Model model) {
 
         Page<PostDto> postDtos = postService.getPostList(pageable);
-
 
         Page<PostTitleResponse> responsePage = postDtos.map(postDto -> PostTitleResponse.builder()
                 .id(postDto.getPostId())
@@ -62,7 +61,7 @@ public class PostController {
                 .tag(postDto.getTag().toString())
                 .build()
         );
-
+        
         model.addAttribute("posts", responsePage);
         model.addAttribute("pageNum", responsePage.getNumber());
         model.addAttribute("hasNext", responsePage.hasNext());
@@ -124,7 +123,7 @@ public class PostController {
 
         }
 
-        postService.savePost(postReqSave, imagePath);
+//        postService.savePost(postReqSave, imagePath);
         redirectAttributes.addFlashAttribute("successMessage", "게시글이 성공적으로 등록되었습니다!");
 
         return "/";

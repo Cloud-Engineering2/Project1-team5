@@ -4,6 +4,7 @@ import com.team5.fandom.dto.UserDto;
 import com.team5.fandom.entity.value.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Builder
+@EqualsAndHashCode(of="email")
 public class FanUserDetails implements UserDetails {
 
     private Integer userId;
@@ -59,11 +61,11 @@ public class FanUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "password";
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return "email";
+        return email;
     }
 }

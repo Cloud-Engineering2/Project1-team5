@@ -1,27 +1,76 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Artist List</title>
-</head>
-<body>
-    <h1>Artist List</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Group</th>
-            </tr>
-        </thead>        
-        <tbody>
-            <tr th:each="artist, iterStat : ${artists}">
-                <td th:text="${iterStat.count}"></td>
-                <td th:text="${artist.artistId}"></td>
-                <td th:text="${artist.artistName}"></td>
-                <td th:text="${artist.debutDate}"></td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+	<head>
+		<title>Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" th:href="@{/assets/css/main.css}"  />
+		<noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header th:replace="~{fragments/header :: header}"></header>
+
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Aritst Info</h1>
+								
+							</header>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+									<a >
+										<h2>Magna</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<div>
+									<a th:text="${artist?.artistName}"></a>
+									<p>Debut Date <span th:text="${#temporals.format(artist?.debutDate, 'yyyy-MM-dd')}"></span></p>
+								</div>
+								
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>

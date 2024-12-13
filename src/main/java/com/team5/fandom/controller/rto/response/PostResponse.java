@@ -18,4 +18,5 @@ public class PostResponse {
     private Fandom fandom;
     private Tag tag;
     private String img;
+    
 }
