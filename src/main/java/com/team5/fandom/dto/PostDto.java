@@ -5,13 +5,16 @@ import java.time.LocalDateTime;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.Post;
 import com.team5.fandom.entity.User;
+import com.team5.fandom.entity.value.Level;
 import com.team5.fandom.entity.value.Tag;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Builder
 @Getter
+@AllArgsConstructor
 public class PostDto {
 
     private Integer postId;
@@ -24,15 +27,6 @@ public class PostDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
-    private PostDto(Integer postId, String postTitle, String postContent, UserDto userDto, FandomDto fandomDto, Tag tag, String img, LocalDateTime createdDate, LocalDateTime modifiedDate) {
-        this.postId = postId;
-        this.postTitle = postTitle;
-        this.postContent = postContent;
-        this.userDto = userDto;
-        this.fandomDto = fandomDto;
-        this.tag = tag;
-        this.img = img;
-    }
 //    <img th:if="${post.imageUrl != null}" th:src="${post.imageUrl}" alt="Post Image" class="image">
     // Entity -> Dto 변환 메서드
     public static PostDto toPostDto(Post post) {

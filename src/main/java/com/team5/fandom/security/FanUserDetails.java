@@ -59,11 +59,11 @@ public class FanUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "password";
+        return password; 
     }
 
     @Override
     public String getUsername() {
-        return "email";
+        return email;
     }
 }

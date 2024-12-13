@@ -6,8 +6,21 @@
     <link rel="stylesheet" th:href="@{/assets/css/main.css}">
     <style>
         /* 중앙 정렬 */
+        body {
+			margin : 0;
+            display: block;
+            overflow-y: scroll;
+        }
 
-
+		#header {
+			padding : 0;
+			margin-bottom: 2em;
+			background-color: rgba(255, 255, 255, 33%);
+		}
+		
+		#header .logo {
+			margin : 1em 1em 1em 1em;
+		}
         /* Fandoms 텍스트 중앙 정렬 */
         #auth-container h2 {
             text-align: center;
@@ -68,9 +81,10 @@
             text-decoration: underline;
         }
     </style>
+    
 </head>
 <body>
-
+<header th:replace="~{fragments/header :: header}"></header>
 <!-- 동적 텍스트 -->
 <div id="welcome"></div>
 
@@ -81,7 +95,7 @@
             <div class="fields">
                 <div class="field">
                     <label for="id">Email</label>
-                    <input type="text" name="id" id="id" placeholder="email" required />
+                    <input type="email" name="email" id="email" placeholder="email" required />
                 </div>
                 </div>
             <div class="fields">
@@ -112,10 +126,10 @@
 <script>
     // 간단한 클라이언트 측 로그인 유효성 검사
     function validateLoginForm() {
-        const id = document.getElementById("id").value.trim();
+        const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
 
-        if (id === "" || password === "") {
+        if (email === "" || password === "") {
             alert("모든 필드를 채워주세요!");
             return false;
         }

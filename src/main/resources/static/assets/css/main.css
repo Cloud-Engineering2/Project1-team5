@@ -51,6 +51,8 @@ body {
 	font-family: Arial, sans-serif;
 }
 
+
+
 /* 배경 애니메이션 */
 @keyframes backgroundMove {
 	0% { background-position: 0 0; }

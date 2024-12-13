@@ -1,11 +1,10 @@
 package com.team5.fandom.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
-import com.team5.fandom.controller.rto.request.RegistryRequest;
-import com.team5.fandom.dto.FandomDto;
 import com.team5.fandom.dto.UserDto;
-import com.team5.fandom.entity.Artist;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.User;
 import com.team5.fandom.entity.value.Level;
@@ -22,17 +21,17 @@ public class CommonService {
 	 private final UserRepository userRepository;
 	 private final FandomRepository fandomRepository;
 	 
-    public UserDto authenticate(String email, String password) {
-        // 데이터베이스에서 사용자 정보 조회
-    	User user = userRepository.findByEmail(email);
+//   public UserDto authenticate(String email, String password) {
+//       // 데이터베이스에서 사용자 정보 조회
+//   	Optional<User> optionalUser = userRepository.findByEmail(email);
+//
+//       // 사용자 존재 여부와 비밀번호 검증
+//       if (optionalUser.isPresent() && optionalUser.get().getPassword().equals(password)) {
+//           return UserDto.toUserDto(optionalUser.get()); // User 엔티티를 UserDto로 변환하여 반환
+//       }
+//       return null; // 인증 실패 시 null 반환
+//   }
 
-        // 사용자 존재 여부와 비밀번호 검증
-        if (user != null && user.getPassword().equals(password)) {
-            return UserDto.toUserDto(user); // User 엔티티를 UserDto로 변환하여 반환
-        }
-        return null; // 인증 실패 시 null 반환
-    }
-    
     
     public void registerUser(UserDto userDto) {
  
@@ -47,6 +46,7 @@ public class CommonService {
             throw new IllegalArgumentException("이메일 '" + userDto.getEmail() + "'은(는) 이미 사용 중입니다.");
         }
 
+      
         Integer fandomID = userDto.getFandomDto().getFandomId();
         
        

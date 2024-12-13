@@ -4,6 +4,8 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Phantom by HTML5 UP</title>
@@ -11,29 +13,59 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" th:href="@{/assets/css/main.css}"  />
 		<noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+		<style>
+        body {
+			margin : 0;
+            display: block;
+            overflow-y: scroll;
+        }
+
+		#header {
+			padding : 0;
+			margin-bottom: 2em;
+			background-color: rgba(255, 255, 255, 33%);
+		}
+		
+		#header .logo {
+			margin : 1em 1em 1em 1em;
+		}
+		
+
+        .form-container {
+            font-size: 10pt;
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        
+        .posts-container {
+            width: 500px;
+            display: block;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(245, 245, 245, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+		</style>		
+	
+	
 	</head>
+			    <!-- Header -->
+    <header th:replace="~{fragments/header :: header}"></header>
 	<body class="is-preload">
+	
+		<div id="form-container">
+			<div id="posts-container">
 		<!-- Wrapper -->
-			<div id="wrapper">
+			<div id="posts-container">
 
-				<!-- Header -->
-				<header th:replace="~{fragments/header :: header}"></header>
-
-
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-					</nav>
 
 				<!-- Main -->
-					<div class="row">
+	
 				      <table class="table" id="fandom-table">
 				        <thead>
 				        <tr>
@@ -52,13 +84,11 @@
 				        </tr>
 				        </tbody>
 				      </table>
-				    </div>
+	
 
-				<!-- Footer -->
-				<footer th:replace="~{fragments/footer :: footer}"></footer>
-
+				</div>	
 			</div>
-
+		</div>
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
