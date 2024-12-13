@@ -1,17 +1,20 @@
 package com.team5.fandom.entity;
 
+import com.team5.fandom.common.utils.LevelAttributeConverter;
 import com.team5.fandom.entity.value.Level;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Getter
@@ -25,7 +28,8 @@ public class Fandom extends AuditingFields {
     @Column(name = "fandom_name", nullable = false, length = 255)
     private String fandomName;
 
-    @Enumerated(EnumType.STRING)
+//  @Enumerated(EnumType.STRING)
+    @Convert(converter = LevelAttributeConverter.class)
     @Column(name = "fandom_level")
     private Level fandomLevel;
 

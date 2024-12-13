@@ -1,9 +1,11 @@
 package com.team5.fandom.entity.value;
 
-public enum Role {
-	User("User"),
-	Admin("Admin");
+import java.util.Arrays;
 
+public enum Role {
+    USER("USER"),
+    ADMIN("ADMIN");
+	
     private final String roleName;
 
     Role(String roleName) {
@@ -13,4 +15,11 @@ public enum Role {
     public String getRoleName() {
         return roleName;
     }
+    
+    public static Role getInstance(String roleType) {
+		return Arrays.stream(Role.values())
+					.filter(role -> role.getRoleName().equals(roleType))
+					.findFirst()
+					.orElseThrow();
+	}
 }
