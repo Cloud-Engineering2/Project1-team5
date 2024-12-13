@@ -31,7 +31,6 @@ public class Post {
 
     @Enumerated(EnumType.STRING)
     private Tag tag;
-
     private String img;
 
 

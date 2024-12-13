@@ -8,6 +8,10 @@ import com.team5.fandom.entity.value.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
+
+
+@AllArgsConstructor
 @Builder
 @Getter
 public class PostDto {
@@ -20,7 +24,7 @@ public class PostDto {
     private Tag tag;
     private String img;
 
-
+/*
     private PostDto(Integer postId, String postTitle, String postContent, UserDto userDto, FandomDto fandomDto, Tag tag, String img) {
         this.postId = postId;
         this.postTitle = postTitle;
@@ -29,7 +33,7 @@ public class PostDto {
         this.fandomDto = fandomDto;
         this.tag = tag;
         this.img = img;
-    }
+    }*/
 
     // Entity -> Dto 변환 메서드
     public static PostDto toPostDto(Post post) {

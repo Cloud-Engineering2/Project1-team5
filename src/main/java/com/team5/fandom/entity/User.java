@@ -1,11 +1,8 @@
 package com.team5.fandom.entity;
 
-import java.util.Objects;
-
 import com.team5.fandom.entity.value.Level;
-import com.team5.fandom.entity.value.Role;
-import com.team5.fandom.entity.value.Tag;
 
+import com.team5.fandom.entity.value.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,10 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

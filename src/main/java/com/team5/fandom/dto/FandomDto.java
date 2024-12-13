@@ -3,14 +3,9 @@ package com.team5.fandom.dto;
 import com.team5.fandom.entity.Artist;
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.value.Level;
-import com.team5.fandom.entity.value.Role;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 
 @Getter
