@@ -31,7 +31,7 @@ public class Fandom {
 
     @Column(name = "fandom_exp", nullable = false)
     private Integer fandomExp;
-
+    
     @ManyToOne
     @JoinColumn(name = "artist_id", unique = true)
     private Artist artist;
