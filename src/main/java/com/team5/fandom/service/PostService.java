@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
 
+
     private final PostRepository postRepository;
 
     public Page<PostDto> getPostList(Pageable pageable) {
@@ -30,9 +31,7 @@ public class PostService {
             return null;
         }
         return PostDto.toPostDto(post);
+
     }
-    
-    public Integer savePost(PostReqSave postReqSave, String imagePath) {
-    	return 1;
-    }
+
 }
