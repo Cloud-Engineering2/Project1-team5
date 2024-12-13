@@ -24,11 +24,5 @@ public class PostService {
         return postDtos;
     }
 
-    public Integer savePost(PostReqSave postReqSave, String imagePath) {
-
-            PostDto.builder()
-                    .postTitle(postReqSave.getPostTitle())
-                    .postContent(postReqSave.getPostContent())
-                    .
-    }
+   // public Integer savePost(PostReqSave postReqSave, String imagePath) {}
 }
