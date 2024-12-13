@@ -6,21 +6,23 @@ import com.team5.fandom.entity.Artist;
 import com.team5.fandom.entity.value.Level;
 import com.team5.fandom.entity.value.Role;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 
-
+@NoArgsConstructor
 @Getter
 @Builder
 public class ArtistDto {
     private Integer artistId;
     private String artistName;
     private LocalDateTime debutDate;
-
-    private ArtistDto(Integer artistId, String artistName, LocalDateTime debutDate) {
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
+    private ArtistDto(Integer artistId, String artistName, LocalDateTime debutDate, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.artistId = artistId;
         this.artistName = artistName;
         this.debutDate = debutDate;
@@ -31,7 +33,9 @@ public class ArtistDto {
         return new ArtistDto(
                 artist.getArtistId(),
                 artist.getArtistName(),
-                artist.getDebutDate()
+                artist.getDebutDate(),
+                artist.getCreatedDate(),
+                artist.getModifiedDate()
         );
     }
 

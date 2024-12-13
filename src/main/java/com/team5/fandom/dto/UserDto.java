@@ -1,16 +1,19 @@
 package com.team5.fandom.dto;
 
+import java.time.LocalDateTime;
+
 import com.team5.fandom.entity.Fandom;
 import com.team5.fandom.entity.User;
 import com.team5.fandom.entity.value.Level;
 import com.team5.fandom.entity.value.Role;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@NoArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -24,9 +27,10 @@ public class UserDto {
     private Level fanLevel;
     private Integer fanExp;
     private FandomDto fandomDto;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
-
-    private UserDto(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, FandomDto fandomDto) {
+    private UserDto(Integer userId, String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, FandomDto fandomDto, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
@@ -49,7 +53,9 @@ public class UserDto {
         user.getRole(),
         user.getFanLevel(),
         user.getFanExp(),
-        FandomDto.toFandomDto(user.getFandom()));
+        FandomDto.toFandomDto(user.getFandom()),
+		user.getCreatedDate(),
+		user.getModifiedDate());
     }
 
     // DTO -> Entity 변환

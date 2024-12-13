@@ -1,10 +1,7 @@
 package com.team5.fandom.entity;
 
-import java.util.Objects;
-
 import com.team5.fandom.entity.value.Level;
 import com.team5.fandom.entity.value.Role;
-import com.team5.fandom.entity.value.Tag;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,15 +13,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class User {
+public class User extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -68,12 +63,7 @@ public class User {
     public static User of( String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Fandom fandom) {
         return new User(userName, email, password, role, fanLevel, fanExp, fandom);
     }
-    
-
-
-    
-    
-
+   
     
 }
 

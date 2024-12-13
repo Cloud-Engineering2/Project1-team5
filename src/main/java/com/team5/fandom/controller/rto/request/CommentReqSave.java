@@ -25,10 +25,10 @@ public class CommentReqSave {
     	return new CommentReqSave(postId, commentContent);
     }
     
-    public CommentDto toDto(UserDto userDto) {
-		return CommentDto.of(postId, 
-							 commentContent, 
-							 userDto);
-	}
+//    public CommentDto toDto(UserDto userDto) {
+//		return CommentDto.of(postId, 
+//							 commentContent, 
+//							 userDto);
+//	}
     
 }

@@ -1,8 +1,8 @@
 package com.team5.fandom.entity.value;
 
 public enum Role {
-    USER("User"),
-    ADMIN("Admin");
+	User("User"),
+	Admin("Admin");
 
     private final String roleName;
 
