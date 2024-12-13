@@ -25,9 +25,50 @@
 	        width: 100%; /* 에러 메시지가 부모의 너비를 따라가도록 설정 */
 	        text-align: left; /* 왼쪽 정렬 */
 	    }
-	</style>
+	    
+        body {
+			margin : 0;
+            display: block;
+            overflow-y: scroll;
+        }
+
+		#header {
+			padding : 0;
+			margin-bottom: 2em;
+			background-color: rgba(255, 255, 255, 33%);
+		}
+		
+		#header .logo {
+			margin : 1em 1em 1em 1em;
+		}
+		
+        body {
+            display: block;
+            overflow-y: scroll;
+        }
+
+        .form-container {
+            font-size: 10pt;
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        
+        .posts-container {
+            width: 500px;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(245, 245, 245, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+		</style>		
 </head>
 <body>
+	    <header th:replace="~{fragments/header :: header}"></header>
 <div id="auth-container">
     <section id="loginform" th:id="loginform">
         <h2>Register</h2>

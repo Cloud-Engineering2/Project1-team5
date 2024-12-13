@@ -42,6 +42,19 @@ public class UserDto {
     }
 
 
+    public static UserDto of(Integer userId,String userName,String email,String password,Role role) {
+        return UserDto.builder()
+                .userId(userId)
+                .userName(userName)
+                .email(email)
+                .password(password)
+                .role(role)
+                .build();
+
+    }
+
+
+    
 
     // Entity -> DTO 변환
     public static UserDto toUserDto(User user) {
