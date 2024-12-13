@@ -9,16 +9,19 @@ import org.springframework.stereotype.Service;
 import com.team5.fandom.controller.rto.response.CommentResponse;
 import com.team5.fandom.entity.Comment;
 import com.team5.fandom.repository.CommentRepository;
-import com.team5.fandom.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+
 
 @Service
 @RequiredArgsConstructor
 public class CommentService {
 
-    private final CommentRepository commentRepository;
 
+
+    private final CommentRepository commentRepository;
+//    private final UserRepository userRepository;
+//    private final PostRepository postRepository;
     public List<CommentResponse> getCommentsByPostId(Integer postId) {
         List<Comment> comments = commentRepository.findByPostId(postId);
         if (comments == null) {
@@ -28,4 +31,27 @@ public class CommentService {
                 .map(Comment::toCommentResponse)
                 .collect(Collectors.toList());
     }
+
+
+	
+
+//	
+//	
+//	public void registerPostComment(PostCommentDto postCommentDto) {
+//		User user = userRepository.getReferenceById(postCommentDto.getUserDto().getUid());
+//		
+//		Post post = postRepository.getReferenceById(postCommentDto.getPid());
+//		
+//		PostComment postComment = postCommentDto.toEntity(post, user);
+//		
+//		postCommentRepository.save(postComment);
+//		
+//	}
+//	
+//	@Transactional
+//	public void deletePostComment(Long pcid, String uid) {
+//		postCommentRepository.deleteByIdAndUser_Uid(pcid, uid);
+//	}
+	
 }
+
