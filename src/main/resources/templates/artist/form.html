@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist List</title>
+    	<style>
+        body {
+			margin : 0;
+            display: block;
+            overflow-y: scroll;
+        }
+
+		#header {
+			padding : 0;
+			margin-bottom: 2em;
+			background-color: rgba(255, 255, 255, 33%);
+		}
+		
+		#header .logo {
+			margin : 1em 1em 1em 1em;
+		}
+		</style>
+</head>
+<body>
+    <h1>Artist List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Group</th>
+            </tr>
+        </thead>        
+        <tbody>
+            <tr th:each="artist, iterStat : ${artists}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${artist.artistId}"></td>
+                <td th:text="${artist.artistName}"></td>
+                <td th:text="${artist.debutDate}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

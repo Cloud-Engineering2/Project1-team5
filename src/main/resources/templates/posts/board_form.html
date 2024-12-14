@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 목록</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <style>
+        body {
+			margin : 0;
+            display: block;
+            overflow-y: scroll;
+        }
+
+		#header {
+			padding : 0;
+			margin-bottom: 2em;
+			background-color: rgba(255, 255, 255, 33%);
+		}
+		
+		#header .logo {
+			margin : 1em 1em 1em 1em;
+		}</style>
+</head>
+<body>
+	
+				<!-- Header -->
+	<header th:replace="~{fragments/header :: header}"></header>
+    <div class="container">
+        <h1>게시판 목록</h1>
+
+        <!-- 게시글 목록 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>태그</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.id}"></td>
+                    <td>
+                        <a th:href="@{'/f/c/1/p/' + ${post.id}}" th:text="${post.title}"></a>
+                    </td>
+                    <td th:text="${post.name}"></td>
+                    <td th:text="${post.createdDate}"></td>
+                    <td th:text="${post.tag}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+            <button th:if="${hasPrevious}" th:onclick="|window.location='/p?page=' + (${pageNum} - 1)|">이전</button>
+            <span th:text="${pageNum + 1} + ' / ' + ${pageTotal}"></span>
+            <button th:if="${hasNext}" th:onclick="|window.location='/p?page=' + (${pageNum} + 1)|">다음</button>
+        </div>
+    </div>
+</body>
+</html>

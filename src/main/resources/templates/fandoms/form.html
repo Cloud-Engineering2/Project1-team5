@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" th:href="@{/assets/css/main.css}"  />
+		<noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+		<style>
+        body {
+			margin : 0;
+            display: block;
+            overflow-y: scroll;
+        }
+
+		#header {
+			padding : 0;
+			margin-bottom: 2em;
+			background-color: rgba(255, 255, 255, 33%);
+		}
+		
+		#header .logo {
+			margin : 1em 1em 1em 1em;
+		}
+		
+
+        .form-container {
+            font-size: 10pt;
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        
+        .posts-container {
+            width: 500px;
+            display: block;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(245, 245, 245, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+		</style>		
+	
+	
+	</head>
+			    <!-- Header -->
+    <header th:replace="~{fragments/header :: header}"></header>
+	<body class="is-preload">
+	
+		<div id="form-container">
+			<div id="posts-container">
+		<!-- Wrapper -->
+			<div id="posts-container">
+
+
+				<!-- Main -->
+	
+				      <table class="table" id="fandom-table">
+				        <thead>
+				        <tr>
+				          <th class="name col-3"><a>Fandom Name</a></th>
+				          <th class="level col-3"><a>Fandom Level</a></th>
+				          <th class="exp"><a>Fandom Exp</a></th>
+				          <th class="artist-name"><a th:href="@{/f/a}">아티스트</a></th>
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr th:each="fandom : ${fandoms}">
+				          <td class="name"><a th:text="${fandom?.fandomName}" th:href="@{/f/c/{fandomId} (fandomId=${fandom?.fandomId})}">Fandom Name</a></td>
+				          <td class="level" ><a th:text="${fandom?.fandomLevel}">Fandom Level</a></td>
+				          <td class="exp" th:text="${fandom?.fandomExp}">Fandom Exp</td>
+				          <td class="artist-name" ><a th:text="${fandom?.artistDto.artistName}" th:href="@{/f/a/{artistId} (artistId=${fandom?.artistDto.artistId})}">해당 팬덤 아티스트</a></td>
+				        </tr>
+				        </tbody>
+				      </table>
+	
+
+				</div>	
+			</div>
+		</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
