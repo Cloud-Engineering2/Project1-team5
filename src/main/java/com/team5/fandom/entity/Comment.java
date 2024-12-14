@@ -1,5 +1,6 @@
 package com.team5.fandom.entity;
 
+
 import com.team5.fandom.controller.rto.response.CommentResponse;
 
 import jakarta.persistence.CascadeType;
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Comment extends AuditingFields{
+  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
@@ -41,7 +43,7 @@ public class Comment extends AuditingFields{
         this.user = user;
         this.post = post;
     }
-    
+
 
     // No ID
     public static Comment of(String commentContent, User user, Post post) {

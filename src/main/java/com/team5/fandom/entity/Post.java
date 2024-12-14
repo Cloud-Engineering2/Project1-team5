@@ -1,5 +1,6 @@
 package com.team5.fandom.entity;
 
+
 import com.team5.fandom.common.utils.TagAttributeConverter;
 import com.team5.fandom.entity.value.Tag;
 
@@ -40,7 +41,7 @@ public class Post extends AuditingFields {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fandom_id")
     private Fandom fandom;
-    
+
     //  @Enumerated(EnumType.STRING)
     @Convert(converter = TagAttributeConverter.class)
     private Tag tag;
@@ -48,6 +49,7 @@ public class Post extends AuditingFields {
 
 
     private Post(String postTitle, String postContent, User user, Fandom fandom, Tag tag, String img) {
+
         this.postTitle = postTitle;
         this.postContent = postContent;
         this.user = user;

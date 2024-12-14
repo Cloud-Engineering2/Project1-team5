@@ -1,5 +1,6 @@
 package com.team5.fandom.dto;
 
+
 import java.time.LocalDateTime;
 
 import com.team5.fandom.entity.Fandom;
@@ -11,6 +12,7 @@ import com.team5.fandom.entity.value.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+
 
 @Builder
 @Getter
@@ -55,3 +57,4 @@ public class PostDto {
         );
     }
 }
+

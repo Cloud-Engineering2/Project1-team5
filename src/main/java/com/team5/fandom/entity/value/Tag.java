@@ -16,11 +16,12 @@ public enum Tag {
     public String getHashTag() {
         return hashTag;
     }
-    
+
     public static Tag getInstance(String tagType) {
 		return Arrays.stream(Tag.values())
 					.filter(tag -> tag.getHashTag().equals(tagType))
 					.findFirst()
 					.orElseThrow();
 	}
+
 }

@@ -1,5 +1,6 @@
 package com.team5.fandom.repository;
 
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +17,5 @@ public interface CommentRepository extends JpaRepository<Comment,Integer> {
     @Query("SELECT c FROM Comment c WHERE c.post.postId = :postId")
     List<Comment> findByPostId(@Param("postId") Integer postId);
 	
+
 }

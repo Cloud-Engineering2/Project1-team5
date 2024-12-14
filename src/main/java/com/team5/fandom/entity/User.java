@@ -1,5 +1,6 @@
 package com.team5.fandom.entity;
 
+
 import com.team5.fandom.common.utils.LevelAttributeConverter;
 import com.team5.fandom.common.utils.RoleAttributeConverter;
 import com.team5.fandom.entity.value.Level;
@@ -21,6 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class User extends AuditingFields {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -34,6 +36,7 @@ public class User extends AuditingFields {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
+
 //  @Enumerated(EnumType.STRING)
     @Convert(converter = RoleAttributeConverter.class)
     @Column(name = "role", nullable = false)
@@ -44,12 +47,14 @@ public class User extends AuditingFields {
     @Column(name = "fan_level", nullable = false)
     private Level fanLevel;
 
+
     @Column(name = "fan_exp", nullable = false)
     private Integer fanExp;
 
     @ManyToOne
     @JoinColumn(name = "fandom_id")
     private Fandom fandom;
+
 
     private User(String userName, String email, String password, Role role, Level fanLevel, Integer fanExp, Fandom fandom) {
         this.userName = userName;
@@ -69,5 +74,6 @@ public class User extends AuditingFields {
    
     
 }
+
 
 

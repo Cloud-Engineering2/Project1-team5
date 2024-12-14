@@ -1,5 +1,6 @@
 package com.team5.fandom.dto;
 
+
 import java.time.LocalDateTime;
 
 import com.team5.fandom.controller.rto.response.CommentResponse;
@@ -45,3 +46,4 @@ public class CommentDto {
         );
     }
 }
+

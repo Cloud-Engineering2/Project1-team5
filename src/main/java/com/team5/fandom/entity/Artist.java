@@ -1,6 +1,7 @@
 package com.team5.fandom.entity;
 
 import jakarta.persistence.*;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Artist extends AuditingFields{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "artist_id")
@@ -34,6 +36,7 @@ public class Artist extends AuditingFields{
     public static Artist of(String artistName, LocalDateTime debutDate) {
         return new Artist(artistName, debutDate);
     }
+
 
 
 }
